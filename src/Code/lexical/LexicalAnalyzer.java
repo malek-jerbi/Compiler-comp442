@@ -32,29 +32,49 @@ public class LexicalAnalyzer {
             if (currentChar == -1) {
                 return new Token(TokenType.EOF, lineNum, "");
             }
-            // handle digits and decimal numbers
-            if (Character.isDigit(currentChar)) {
+            if (Character.isDigit(currentChar) && currentChar == '0') {
+                return new Token(TokenType.INTEGER, lineNum, "0");
+            }
+            // handle digits and float numbers
+            if (Character.isDigit(currentChar) && currentChar != '0') {
                 StringBuilder lexeme = new StringBuilder();
                 lexeme.append((char) currentChar);
                 currentChar = input.read();
-                while (Character.isDigit(currentChar) || currentChar == '.') {
+                boolean isFloat = false;
+                boolean isExponent = false;
+                while (Character.isDigit(currentChar) || currentChar == '.' || currentChar == 'e' ||  (currentChar == '+' || currentChar == '-') && isExponent) {
+                    if (currentChar == '.') {
+                        if (isFloat) {
+                            throw new IllegalArgumentException("Invalid float format: multiple '.' characters.");
+                        }
+                        isFloat = true;
+                    }
+                    if (currentChar == 'e') {
+                        if (isExponent) {
+                            throw new IllegalArgumentException("Invalid float format: multiple 'e' characters.");
+                        }
+                        isExponent = true;
+                    }
                     lexeme.append((char) currentChar);
                     currentChar = input.read();
                 }
                 input.unread(currentChar);
                 String lexemeString = lexeme.toString();
-                if (lexemeString.contains(".")) {
+                if (isFloat || isExponent) {
                     return new Token(TokenType.FLOAT, lineNum, lexemeString);
                 } else {
                     return new Token(TokenType.INTEGER, lineNum, lexemeString);
                 }
             }
+
+
+
             // handle identifier
             if (Character.isLetter(currentChar)) {
                 StringBuilder lexeme = new StringBuilder();
                 lexeme.append((char) currentChar);
                 currentChar = input.read();
-                while (Character.isLetterOrDigit(currentChar)) {
+                while (Character.isLetterOrDigit(currentChar) || currentChar == '_') {
                     lexeme.append((char) currentChar);
                     currentChar = input.read();
                 }
@@ -124,11 +144,9 @@ public class LexicalAnalyzer {
                 case '/':
                     currentChar = input.read();
                     if (currentChar == '*') {
-                        currentChar = input.read();
-                        while (currentChar != -1 && !(currentChar == '*' && input.read() == '/')) {
-                            currentChar = input.read();
-                        }
-                        return new Token(TokenType.MULTIPLELINECOMMENT, lineNum, "");
+                        int currentNumber = lineNum; //this is the value that represents the location, since lineNum is going to be increased inside the following method
+                        String comment = readMultipleLineComment(input);
+                        return new Token(TokenType.MULTIPLELINECOMMENT, currentNumber, comment + "/");
                     } else if (currentChar == '/') {
                         String comment = "";
                         currentChar = input.read();
@@ -136,7 +154,7 @@ public class LexicalAnalyzer {
                             comment += (char)currentChar;
                             currentChar = input.read();
                         }
-                        return new Token(TokenType.ONELINECOMMENT, lineNum, comment);
+                        return new Token(TokenType.ONELINECOMMENT, lineNum++, comment);
                     } else {
                         input.unread(currentChar);
                         return new Token(TokenType.SLASH, lineNum, "/");
@@ -206,6 +224,41 @@ public class LexicalAnalyzer {
         }
 
     }
+
+    private String readMultipleLineComment(PushbackReader input) throws IOException {
+        String comment = "/*";
+        int currentChar = input.read();
+        while (currentChar != -1) {
+            comment += (char) currentChar;
+
+            if (currentChar == '*') {
+                currentChar = input.read();
+                if (currentChar == '/') {
+                    return comment;
+                } else {
+                    comment += (char) currentChar;
+                    currentChar = input.read();
+                }
+            } else if (currentChar == '/') {
+                currentChar = input.read();
+                if (currentChar == '*') {
+                    comment += readMultipleLineComment(input);
+                    currentChar = input.read();
+                } else {
+                    comment += (char) currentChar;
+                    currentChar = input.read();
+                }
+            } else {
+                if (currentChar == '\n') {
+                    lineNum++;
+                }
+                currentChar = input.read();
+
+            }
+        }
+        return comment;
+    }
+
 }
 
 

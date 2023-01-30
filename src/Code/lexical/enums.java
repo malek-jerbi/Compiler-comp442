@@ -51,6 +51,7 @@ public class enums {
         MULTIPLELINECOMMENT,
         ARROW,
         EOF, //End of file
+        INVALIDNUM,
         UNKNOWN
     }
 
