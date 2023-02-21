@@ -52,6 +52,8 @@ public class enums {
         ARROW,
         EOF, //End of file
         INVALIDNUM,
+        INVALIDCHAR,
+        INVALIDID,
         UNKNOWN
     }
 

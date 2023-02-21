@@ -7,12 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4c2ed7d-192c-46ca-8b0d-be612749a497" name="Changes" comment="all tokens work except float">
+      <change afterPath="$PROJECT_DIR$/src/Code/lexnegativegrading.src" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Code/parser/TopDownParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Code/bubblesort.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Code/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Code/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Code/lexical/LexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Code/lexical/LexicalAnalyzer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Code/lexical/enums.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Code/lexical/enums.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Code/lexpositivegrading.src" beforeDir="false" afterPath="$PROJECT_DIR$/src/Code/lexpositivegrading.src" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Code/malek.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,19 +39,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/malek/IdeaProjects/COMP 442 Compiler Design/src/Code",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/malek/IdeaProjects/COMP 442 Compiler Design/src/Code&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\malek\IdeaProjects\COMP 442 Compiler Design\src\Code" />
@@ -68,6 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674934854642</updated>
       <workItem from="1674934855895" duration="43022000" />
+      <workItem from="1675288453441" duration="36707000" />
     </task>
     <task id="LOCAL-00001" summary="all tokens work except float">
       <created>1675031397656</created>
@@ -96,5 +98,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="all tokens work except float" />
     <option name="LAST_COMMIT_MESSAGE" value="all tokens work except float" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Code/parser/TopDownParser.java</url>
+          <line>297</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

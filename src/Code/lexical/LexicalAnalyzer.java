@@ -32,45 +32,51 @@ public class LexicalAnalyzer {
             if (currentChar == -1) {
                 return new Token(TokenType.EOF, lineNum, "");
             }
-            if (Character.isDigit(currentChar) && currentChar == '0') {
-                return new Token(TokenType.INTEGER, lineNum, "0");
-            }
             // handle digits and float numbers
-            if (Character.isDigit(currentChar) && currentChar != '0') {
+            if (Character.isDigit(currentChar)) {
+                boolean isInvalidNum = false;
                 StringBuilder lexeme = new StringBuilder();
                 lexeme.append((char) currentChar);
                 currentChar = input.read();
                 boolean isFloat = false;
                 boolean isExponent = false;
-                while (Character.isDigit(currentChar) || currentChar == '.' || currentChar == 'e' ||  (currentChar == '+' || currentChar == '-') && isExponent) {
+                while (Character.isLetterOrDigit(currentChar) || currentChar == '.' || currentChar == 'e' || (currentChar == '+' || currentChar == '-') && isExponent) {
                     if (currentChar == '.') {
                         if (isFloat) {
-                            throw new IllegalArgumentException("Invalid float format: multiple '.' characters.");
+                            isInvalidNum = true;
                         }
                         isFloat = true;
                     }
                     if (currentChar == 'e') {
                         if (isExponent) {
-                            throw new IllegalArgumentException("Invalid float format: multiple 'e' characters.");
+                            isInvalidNum = true;
                         }
                         isExponent = true;
                     }
+                    if (isExponent && currentChar == '0') {
+                        isInvalidNum = true;
+                    }
                     lexeme.append((char) currentChar);
                     currentChar = input.read();
+                    if (Character.isLetter(currentChar) && currentChar != 'e') isInvalidNum = true;
                 }
                 input.unread(currentChar);
                 String lexemeString = lexeme.toString();
                 if (isFloat || isExponent) {
+                    if (!isExponent && lexemeString.charAt(lexemeString.length()-1) == '0') return new Token(TokenType.INVALIDNUM, lineNum, lexemeString);
+                    if (lexemeString.charAt(0) == '0' || isInvalidNum) return new Token(TokenType.INVALIDNUM, lineNum, lexemeString);
                     return new Token(TokenType.FLOAT, lineNum, lexemeString);
                 } else {
+                    if (lexemeString.charAt(0) == '0' || isInvalidNum) return new Token(TokenType.INVALIDNUM, lineNum, lexemeString);
                     return new Token(TokenType.INTEGER, lineNum, lexemeString);
                 }
             }
 
 
 
+
             // handle identifier
-            if (Character.isLetter(currentChar)) {
+            if (Character.isLetter(currentChar) || currentChar == '_') {
                 StringBuilder lexeme = new StringBuilder();
                 lexeme.append((char) currentChar);
                 currentChar = input.read();
@@ -126,6 +132,7 @@ public class LexicalAnalyzer {
                     case "not":
                         return new Token(TokenType.NOT, lineNum, lexemeString);
                     default:
+                        if (lexemeString.charAt(0) == '_') return new Token(TokenType.INVALIDID, lineNum, lexemeString);
                         return new Token(TokenType.ID, lineNum, lexemeString);
                 }
 
@@ -133,7 +140,7 @@ public class LexicalAnalyzer {
 
 
 
-// handle operators and punctuation
+        // handle operators and punctuation
             switch (currentChar) {
                 case '+':
                     return new Token(TokenType.PLUS, lineNum, "+");
@@ -215,7 +222,7 @@ public class LexicalAnalyzer {
                         return new Token(TokenType.LESSER, lineNum, "<");
                     }
                 default:
-                    return new Token(TokenType.UNKNOWN, lineNum, Character.toString((char) currentChar));
+                    return new Token(TokenType.INVALIDCHAR, lineNum, Character.toString((char) currentChar));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
