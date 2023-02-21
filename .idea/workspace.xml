@@ -6,15 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4c2ed7d-192c-46ca-8b0d-be612749a497" name="Changes" comment="all tokens work except float">
-      <change afterPath="$PROJECT_DIR$/src/Code/lexnegativegrading.src" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Code/parser/TopDownParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Code/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Code/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Code/lexical/LexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Code/lexical/LexicalAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Code/lexical/enums.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Code/lexical/enums.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Code/lexpositivegrading.src" beforeDir="false" afterPath="$PROJECT_DIR$/src/Code/lexpositivegrading.src" afterDir="false" />
-    </list>
+    <list default="true" id="b4c2ed7d-192c-46ca-8b0d-be612749a497" name="Changes" comment="TopDownParser" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674934854642</updated>
       <workItem from="1674934855895" duration="43022000" />
-      <workItem from="1675288453441" duration="36707000" />
+      <workItem from="1675288453441" duration="37017000" />
     </task>
     <task id="LOCAL-00001" summary="all tokens work except float">
       <created>1675031397656</created>
@@ -78,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675031397656</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="TopDownParser">
+      <created>1676938524884</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676938524884</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,7 +96,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="all tokens work except float" />
-    <option name="LAST_COMMIT_MESSAGE" value="all tokens work except float" />
+    <MESSAGE value="TopDownParser" />
+    <option name="LAST_COMMIT_MESSAGE" value="TopDownParser" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

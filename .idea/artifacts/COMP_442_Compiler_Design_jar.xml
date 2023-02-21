@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="COMP 442 Compiler Design:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/COMP_442_Compiler_Design_jar</output-path>
+    <root id="archive" name="COMP 442 Compiler Design.jar">
+      <element id="module-output" name="COMP 442 Compiler Design" />
+    </root>
+  </artifact>
+</component>
